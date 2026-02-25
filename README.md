@@ -1,2 +1,2 @@
-# ggr472-dolphins
+# Dolphin Watching in Hawaii for the Ethical Tourist
 
