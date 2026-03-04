@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!--Using Bootstrap to add a Navigation Bar-->
+    <!-- Using Bootstrap to add a Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -25,16 +25,34 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- links in nav bar -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Homepage</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Species.html">Dolphin Species</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="Threats.html">Threats to Their Existence</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Conservation.html">Conservation & Relief Efforts</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="SustainableWatching.html">Sustainable Watching Practices</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="MoreInformation.html">More Information</a>
                     </li>
+
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -44,6 +62,37 @@
         </div>
     </nav>
 
+    <!-------------------------------------------------------------------------
+    Container for the main content - 
+    Centre all text inside container and set a background using JPG (or PNG) 
+    
+    **ADDITIONAL/OPTIONAL: MAYBE CHANGING THE COLOUR OF THE TEXT?**
+    -------------------------------------------------------------------------->
+    <div class="container text-center textured box">
+        <!--Heading section-->
+        <div class="row">
+            <h1>Dolphin Watching in Hawaii for the Ethical Tourist</h1>
+        <!-------------------------------------------------------
+        Paragraph section 
+        *Can update it later, just getting the general idea down*
+        -------------------------------------------------------->
+            <p> Our objective is to showcase the high diversity of dolphin species 
+                surrounding Hawaii, while also being aware of the effect tourism 
+                and climate change has on its population. </p>
+        </div>
+        <!--------------------------------------------------------------------
+        Image section - Displayed image is stored in Data folder
+            ***Gotta find image for this section so I'll do this later.***        
+        --------------------------------------------------------------------->
+    
+    </div>
+    <!-- Javascript script file -->
+    <script src="script.js"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
