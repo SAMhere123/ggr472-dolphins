@@ -1,0 +1,32 @@
+h1 {
+    color: rgb(5, 72, 122);
+    text-align: center;
+}
+
+/*-------------------------------------------------------------------
+Custom CSS: Change Navbar text to blue 
+I WONDER IF THERE IS A WAY TO TEXTURE THE NavBar?? 
+IT WOULD LOOK PRETTY COOL IF IT HAD AN HORIZONTAL 
+FLOWING OCEAN WAVE RUNNING THROUGH IT, DO YOU SEE THE VISION?
+-------------------------------------------------------------------*/
+.navbar {
+    background-color: rgb(95, 95, 186) !important;
+    color: rgb(255, 255, 255) !important
+}
+
+.navbar a,
+.navbar .nav-link,
+.navbar-brand {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Custom Bootstrap container: "textured-box". 
+Image will be stored in data folder at a later time */
+
+/* Position of web map on page */
+.map-container {
+    position: absolute;
+    top: 100;
+    bottom: 100;
+    width: 100%;
+}
