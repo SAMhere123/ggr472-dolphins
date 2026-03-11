@@ -22,13 +22,13 @@ map.addControl(new mapboxgl.FullscreenControl());
 // Load the map
 map.on('load', () => {
 
-// 1. ADD DATA SOURCES
+    // 1. ADD DATA SOURCES
     // Add a data source containing GeoJSON data
     map.addSource('INSERTMAPIDHERE', {
         'type': 'geojson',
         'data': '' // Add dolphins point data source path
     });
-// 2. VISUALIZE DATA LAYERS
+    // 2. VISUALIZE DATA LAYERS
     map.addLayer({
         'id': 'INSERTMAPIDHERE',
         'type': 'circle', // Choose the symbol to be a circle
@@ -46,7 +46,7 @@ map.on('load', () => {
                 "6", '#55e0f9',    // light blue for striped dolphin
                 "7", '#5589f9',    // dark blue for fraser dolphin
                 '#ee55f9'    // purple as a fallback colour if none match..?
-            ] 
+            ]
         }
     });
 
@@ -60,8 +60,8 @@ const legenditems = [
     { label: 'Rough Toothed Dolphin', colour: '#fc972a' }, // orange for rough toothed dolphin
     { label: 'Pantropical Spotted Dolphin', colour: '#e3e01a' }, // yellow for pantropical spotted dolphin
     { label: 'Spinner Dolphin', colour: '#adbd00' }, // light green for spinner dolphin
-    { label: 'Rissos Dolphin', colour: '#008015' } // dark green for rissos dolphin
-    { label: 'Striped Dolphin', colour: '#55e0f9' } // light blue for striped dolphin
+    { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
+    { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
     { label: 'Fraser Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
 ];
 
@@ -121,7 +121,7 @@ document.getElementById('layercheck').addEventListener('change', (e) => {
 // 4) Filter data layer to show selected species of dolphins from dropdown selection
 let speciestype;
 
-document.getElementById("Species").addEventListener('change',(e) => {   
+document.getElementById("Species").addEventListener('change',(e) => {
     speciestype = document.getElementById('Species').value;
 
     //console.log(boundaryvalue); // Useful for testing whether correct values are returned from dropdown selection
@@ -139,9 +139,3 @@ document.getElementById("Species").addEventListener('change',(e) => {
     }
 
 });
-
-
-
-
-
-
