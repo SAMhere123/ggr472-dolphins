@@ -7,21 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" id="wixDesktopViewpoint" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
-    <!-- Browser icon - PNG image obtained from public domain -->
-    <style>img#wpstats{display:none}</style>
-			<style>.cmplz-hidden {
-			display: none !important;
-		}</style><link rel="shortcut icon" sizes="32x32" href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=32" type="image/png"/>  
-    <link rel="icon" sizes="192x192" href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=192" type="image/png"/>
-    <link rel="apple-touch-icon" href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=180" type="image/png"/>
-    <meta name="msapplication-TileImage" content="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=270" />
 
+    <!-- Browser icon - PNG image obtained from public domain -->
+    <style>
+        img#wpstats {
+            display: none
+        }
+    </style>
+    <style>
+        .cmplz-hidden {
+            display: none !important;
+        }
+    </style>
+    <link rel="shortcut icon" sizes="32x32"
+        href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=32"
+        type="image/png" />
+    <link rel="icon" sizes="192x192"
+        href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=192"
+        type="image/png" />
+    <link rel="apple-touch-icon"
+        href="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=180"
+        type="image/png" />
+    <meta name="msapplication-TileImage"
+        content="https://img.freepik.com/premium-vector/dolphin-that-is-shape-dolphin_517472-843.jpg;h=270" />
+
+    <!-- mapbox API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- mapbox geocoder plugin -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
+        type="text/css">
     <!-- Bootstrap stylesheet link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!--Custom theme CSS MUST come AFTER Bootstrap, if it's above Bootstrap it will overwrite your changes -->
     <link rel="stylesheet" href="style.css">
+    <!-- Turf.js -->
+    <script src='https://unpkg.com/@turf/turf@7.2.0/turf.min.js'></script>
 </head>
 
 <body>
@@ -29,46 +54,46 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-            <!-- Set Navbar toggler for small screens -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- Set Navbar toggler for small screens -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- links in nav bar -->
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Homepage</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- links in nav bar -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Homepage</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="Species.html">Dolphin Species</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Species.html">Dolphin Species</a>
+                        </li>
 
-                     <li class="nav-item">
-                        <a class="nav-link" href="Threats.html">Threats to Their Existence</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Threats.html">Threats to Their Existence</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="Conservation.html">Conservation & Relief Efforts</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Conservation.html">Conservation & Relief Efforts</a>
+                        </li>
 
-                     <li class="nav-item">
-                        <a class="nav-link" href="SustainableWatching.html">Sustainable Watching Practices</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="SustainableWatching.html">Sustainable Watching Practices</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="MoreInformation.html">More Information</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MoreInformation.html">More Information</a>
+                        </li>
 
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
         </div>
     </nav>
 
@@ -78,31 +103,50 @@
     
     **ADDITIONAL/OPTIONAL: MAYBE CHANGING THE COLOUR OF THE TEXT?**
     -------------------------------------------------------------------------->
-    <div class="container text-center textured box">
+    <div class="container text-center">
         <!--Heading section-->
         <div class="row">
             <h1>Dolphin Watching in Hawaii for the Ethical Tourist</h1>
-        <!-------------------------------------------------------
+            <!-------------------------------------------------------
         Paragraph section 
         *Can update it later, just getting the general idea down*
         -------------------------------------------------------->
-            <p> Our objective is to showcase the high diversity of dolphin species 
-                surrounding Hawaii, while also being aware of the effect tourism 
+            <p> Our objective is to showcase the high diversity of dolphin species
+                surrounding Hawaii, while also being aware of the effect tourism
                 and climate change has on its population. </p>
-        </div>
-        <!--------------------------------------------------------------------
+
+            <!--------------------------------------------------------------------
         Image section - Displayed image is stored in Data folder
             ***Gotta find image for this section so I'll do this later.***        
         --------------------------------------------------------------------->
-    
-    </div>
-    <!-- Javascript script file -->
-    <script src="script.js"></script>
 
-    <!-- Bootstrap Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+            <!-- MAP CONTAINER -->
+            <!-----------------------------
+            Obtained from PacIOOS (2026) 
+            ------------------------------>
+            <!-- Spatial Distribution of Dolphin Species via Satellite Tag Tracking or Direct Human Observation -->
+
+            <div id="iframe_loading" style="width: 640px; height: 480px;"><iframe width="640" height="480"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://www.pacioos.hawaii.edu/voyager/full.html?region=hi&t=h&o=dolph&output=embed"></iframe>
+            </div><br />
+            <large><a href="http://pacioos.org/voyager/index.html?region=hi&t=h&o=dolph" target="_blank">View
+                    Larger Map</a></large>
+
+            <!-- Sightings of Dolphin Species via sattelite tags or direct human observation (difference b/w the category above is these surveys represent any sightings of a given species rather than the motion of an individual organism )-->
+            <div id="iframe_loading" style="width: 640px; height: 480px;"><iframe width="640" height="480"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://www.pacioos.hawaii.edu/voyager/full.html?region=hi&t=h&o=botds:1:d1,frasers:1:d1z1430128799,rissos:1:d2,rtdphs:1:d1,spinds:1:d1,spotds:1:d1,strpds:1:d2&output=embed"></iframe>
+            </div><br /><small><a
+                    href="http://pacioos.org/voyager/index.html?region=hi&t=h&o=botds:1:d1,frasers:1:d1z1430128799,rissos:1:d2,rtdphs:1:d1,spinds:1:d1,spotds:1:d1,strpds:1:d2"
+                    target="_blank">View Larger Map</a></small>
+
+        </div>
+
+        <!-- Javascript script file -->
+        <script src="script.js"></script>
+
+
 </body>
 
 </html>
