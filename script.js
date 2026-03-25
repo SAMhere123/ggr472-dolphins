@@ -1,23 +1,28 @@
-mapboxgl.accessToken = ''; // Add Mapbox access token
+mapboxgl.accessToken = ''; // *** Add Mapbox access token ***
 
+//Initialize map
 const map = new mapboxgl.Map({
-    container: 'my-map',
-    style: 'mapbox://styles/mapbox/standard',
+    container: 'map',   // container id in HTML
+    style: 'mapbox://styles/mapbox/standard',   //***Add map style here ***
     config: {
         basemap: {
             theme: "standard"
         }
     },
-    center: [-156.3, 20.8], // Rough coordinates for the Hawaii (can change later)
-    zoom: 10,
+    center: [ x, y ], // Rough coordinates for the Hawaii (can change later)
+    zoom: 10,   // starting point, longitude, latitude
     minZoom: 4 // Furthest out that the map can zoom to ensure the target area is visible
 });
 
 /*--------------------------------------------------------------------
-MAP CONTROLS
+MAP CONTROLS: zoom, rotation, and fullscreen
 --------------------------------------------------------------------*/
 map.addControl(new mapboxgl.NavigationControl());
 map.addControl(new mapboxgl.FullscreenControl());
+
+/*--------------------------------------------------------------------
+Step 2: VIEW GEOJSON POINT DATA ON MAP
+--------------------------------------------------------------------*/
 
 // Load the map
 map.on('load', () => {
