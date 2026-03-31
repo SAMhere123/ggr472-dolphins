@@ -29,27 +29,27 @@ map.on('load', () => {
 
     // 1. ADD DATA SOURCES
     // Add a data source containing GeoJSON data
-    map.addSource('INSERTMAPIDHERE', {
+    map.addSource('dolphins', {
         'type': 'geojson',
-        'data': '' // Add dolphins point data source path
+        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
     });
     // 2. VISUALIZE DATA LAYERS
     map.addLayer({
-        'id': 'INSERTMAPIDHERE',
+        'id': 'dolphins-pnt',
         'type': 'circle', // Choose the symbol to be a circle
-        'source': 'INSERTDATASOURCEHERE', // Get data from the dolphins data source
+        'source': 'dolphins', // Get data from the dolphins data source
         'paint': {
             'circle-radius': 5, // Set radius of dolphin points
             'circle-color': [
                 'match',
                 ['get', 'species'], // Set colour of dolphin points based on their species (colour is tentative)
-                "1", '#fd3c3c',   // red for bottlenose dolphin
-                "2", '#fc972a',   // orange for rough toothed dolphin
-                "3", '#e3e01a',   // yellow for pantropical spotted dolphin
-                "4", '#adbd00',   // light green for spinner dolphin
-                "5", '#008015',    // dark green for rissos dolphin
-                "6", '#55e0f9',    // light blue for striped dolphin
-                "7", '#5589f9',    // dark blue for fraser dolphin
+                "bottlenose dolphin", '#fd3c3c',   // red for bottlenose dolphin
+                "rough-toothed dolphin", '#fc972a',   // orange for rough toothed dolphin
+                "pantropical spotted dolphin", '#e3e01a',   // yellow for pantropical spotted dolphin
+                "spinner dolphin", '#adbd00',   // light green for spinner dolphin
+                "Rissos dolphin", '#008015',    // dark green for rissos dolphin
+                "striped dolphin", '#55e0f9',    // light blue for striped dolphin
+                "Frasers dolphin", '#5589f9',    // dark blue for frasers dolphin
                 '#ee55f9'    // purple as a fallback colour if none match..?
             ]
         }
@@ -117,7 +117,7 @@ legendcheck.addEventListener('click', () => { // Button that is triggered by a c
 // 3) Change map layer display of dolphins based on check box using setLayoutProperty method
 document.getElementById('layercheck').addEventListener('change', (e) => {
     map.setLayoutProperty(
-        'INSERTMAPIDHERE',
+        'dolphins-pnt',
         'visibility',
         e.target.checked ? 'visible' : 'none'
     );
@@ -133,12 +133,12 @@ document.getElementById("Species").addEventListener('change',(e) => {
 
     if (speciestype == 'All') {
         map.setFilter(
-            'INSERTMAPIDHERE',
+            'dolphins-pnt',
             null // Resets the filter to show all dolphins
         );
     } else {
         map.setFilter(
-            'INSERTMAPIDHERE',
+            'dolphins-pnt',
             ['==', ['get', 'species'], speciestype] // Shows only selected species of dolphins
         );
     }
