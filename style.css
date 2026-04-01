@@ -43,10 +43,10 @@ Image will be stored in data folder at a later time */
 
 .legend {
     position: relative;
-    bottom: 30px;
+    bottom: 0px;
     left: 10px;
     background: white;
-    padding: 10px;
+    padding: 8px;
     font-size: 12px;
     border-radius: 4px;
 }
@@ -64,3 +64,4 @@ Image will be stored in data folder at a later time */
     background-color: var(--legendcolour);
     margin-right: 6px;
 }
+
