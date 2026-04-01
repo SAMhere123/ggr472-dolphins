@@ -125,21 +125,22 @@
             Obtained from PacIOOS (2026) 
             ------------------------------>
             <!-- Spatial Distribution of Dolphin Species via Satellite Tag Tracking or Direct Human Observation -->
-
+            <h2> Dolphin Sightings </h2>
             <div id="iframe_loading" style="width: 640px; height: 480px;"><iframe width="640" height="480"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://www.pacioos.hawaii.edu/voyager/full.html?region=hi&t=h&o=dolph&output=embed"></iframe>
-            </div><br />
-            <large><a href="http://pacioos.org/voyager/index.html?region=hi&t=h&o=dolph" target="_blank">View
-                    Larger Map</a></large>
-                   
+                    src="https://www.pacioos.hawaii.edu/voyager/full.html?region=hi&b=17.75631,-166.028247,24.564396,-151.669117&t=h&o=botds:1:d1,frasers:1:d1z1430128799,rissos:1:d2,rtdphs:1:d1,spinds:1:d1,spotds:1:d1,strpds:1:d2&output=embed"></iframe>
+            </div><br /><small><a
+                    href="http://pacioos.org/voyager/index.html?region=hi&b=17.75631,-166.028247,24.564396,-151.669117&t=h&o=botds:1:d1,frasers:1:d1z1430128799,rissos:1:d2,rtdphs:1:d1,spinds:1:d1,spotds:1:d1,strpds:1:d2"
+                    target="_blank">View Larger Map</a></small>
+            
             <!-- MAP CONTAINER -->
             <div id='map' class='map'></div>
 
             <!-- LEGEND -->
             <div id='legend' class='legend'>
-                <h4>Dolphins</h4> <!-- Title of the legend -->
+                <h4>Relative Spatial Distribution of Dolphin Species Locations</h4> <!-- Title of the legend -->
             </div>
+
 
             <label for="species-select">Select a dolphin species:</label>
             <select id="species-select">
@@ -152,12 +153,16 @@
                 <option value="striped dolphin">Striped Dolphin</option>
                 <option value="Frasers dolphin">Fraser Dolphin</option>
             </select>
-                <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
-        </div>
-        </div>
+            <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
 
-        <!-- Javascript script file -->
-        <script src="script.js"></script>
+            <p> A collection of various dolphin species whose known locations have been identified
+                either via automated satellite tracking of tagged individuals or through direct human obsrvation:
+                surveys (shipborne or aerial), photography, and/or genetic sampling </p>
+        </div>
+    </div>
+
+    <!-- Javascript script file -->
+    <script src="script.js"></script>
 
 
 </body>
