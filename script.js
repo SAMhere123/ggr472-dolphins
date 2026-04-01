@@ -1,4 +1,4 @@
-mapboxgl.accessToken = ''; // *** Add Mapbox access token ***
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbmphbmEiLCJhIjoiY21rNGdpc3BoMDdiNzNlb3Yxbm02dGpwOCJ9.xYpWe_CkRr_Oe_Q-DtaVYw'; // *** Add Mapbox access token ***
 
 //Initialize map
 const map = new mapboxgl.Map({
@@ -9,9 +9,9 @@ const map = new mapboxgl.Map({
             theme: "standard"
         }
     },
-    center: [ x, y ], // Rough coordinates for the Hawaii (can change later)
-    zoom: 10,   // starting point, longitude, latitude
-    minZoom: 4 // Furthest out that the map can zoom to ensure the target area is visible
+    center: [-156.3, 20.8], // Rough coordinates for the Hawaii (can change later)
+    zoom: 6,   // starting point, longitude, latitude
+    minZoom: 2 // Furthest out that the map can zoom to ensure the target area is visible
 });
 
 /*--------------------------------------------------------------------
@@ -31,7 +31,7 @@ map.on('load', () => {
     // Add a data source containing GeoJSON data
     map.addSource('dolphins', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
+        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/Data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
     });
     // 2. VISUALIZE DATA LAYERS
     map.addLayer({
@@ -54,7 +54,21 @@ map.on('load', () => {
             ]
         }
     });
+    // CREATE DOLPHINS SPECIES FILTER
+    const dropdown = document.getElementById('species-select');
+    dropdown.addEventListener('change', () => { // check for dropdown box selection
+        const selected = dropdown.value;
 
+        if (selected == 'all') {
+            map.setFilter('dolphins-pnt', null); // show all species
+        } else {
+            map.setFilter('dolphins-pnt', [
+                '==',
+                ['get', 'species'],
+                selected // show selected species
+            ]);
+        }
+    });
 });
 /*--------------------------------------------------------------------
 CREATE LEGEND IN JAVASCRIPT
@@ -67,7 +81,7 @@ const legenditems = [
     { label: 'Spinner Dolphin', colour: '#adbd00' }, // light green for spinner dolphin
     { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
     { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
-    { label: 'Fraser Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
+    { label: 'Frasers Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
 ];
 
 // For each array item create a row to put the label and colour in
@@ -93,54 +107,7 @@ ADD INTERACTIVITY BASED ON HTML EVENT
 document.getElementById('returnbutton').addEventListener('click', () => { // Button that is triggered by a click
     map.flyTo({
         center: [-156.3, 20.8], // Clicking the button moves to these starting coordinates
-        zoom: 10, // Clicking the button returns the zoom to 10
+        zoom: 6, // Clicking the button returns the zoom to 6
         essential: true
     });
-});
-
-
-// 2) Change display of legend based on check box
-let legendcheck = document.getElementById('legendcheck'); // Create variable for a button that can be checked
-
-legendcheck.addEventListener('click', () => { // Button that is triggered by a click
-    if (legendcheck.checked) {
-        legendcheck.checked = true; // Check if the legendcheck variable is true
-        legend.style.display = 'block'; // If the legendcheck variable is true, hide the legend
-    }
-    else {
-        legend.style.display = "none"; // Reveal the legend
-        legendcheck.checked = false;
-    }
-});
-
-
-// 3) Change map layer display of dolphins based on check box using setLayoutProperty method
-document.getElementById('layercheck').addEventListener('change', (e) => {
-    map.setLayoutProperty(
-        'dolphins-pnt',
-        'visibility',
-        e.target.checked ? 'visible' : 'none'
-    );
-});
-
-// 4) Filter data layer to show selected species of dolphins from dropdown selection
-let speciestype;
-
-document.getElementById("Species").addEventListener('change',(e) => {
-    speciestype = document.getElementById('Species').value;
-
-    //console.log(boundaryvalue); // Useful for testing whether correct values are returned from dropdown selection
-
-    if (speciestype == 'All') {
-        map.setFilter(
-            'dolphins-pnt',
-            null // Resets the filter to show all dolphins
-        );
-    } else {
-        map.setFilter(
-            'dolphins-pnt',
-            ['==', ['get', 'species'], speciestype] // Shows only selected species of dolphins
-        );
-    }
-
 });
