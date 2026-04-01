@@ -140,7 +140,27 @@
             </div><br /><small><a
                     href="http://pacioos.org/voyager/index.html?region=hi&t=h&o=botds:1:d1,frasers:1:d1z1430128799,rissos:1:d2,rtdphs:1:d1,spinds:1:d1,spotds:1:d1,strpds:1:d2"
                     target="_blank">View Larger Map</a></small>
+                <!-- MAP CONTAINER -->
+            <div id='map' class='map'></div>
 
+            <!-- LEGEND -->
+            <div id='legend' class='legend'>
+                <h4>Dolphins</h4> <!-- Title of the legend -->
+            </div>
+
+            <label for="species-select">Select a dolphin species:</label>
+            <select id="species-select">
+                <option value="all">All species</option>
+                <option value="bottlenose dolphin">Bottlenose Dolphin</option>
+                <option value="rough-toothed dolphin">Rough-Toothed Dolphin</option>
+                <option value="pantropical spotted dolphin">Pantropical Spotted Dolphin</option>
+                <option value="spinner dolphin">Spinner Dolphin</option>
+                <option value="Rissos dolphin">Rissos Dolphin</option>
+                <option value="striped dolphin">Striped Dolphin</option>
+                <option value="Frasers dolphin">Fraser Dolphin</option>
+            </select>
+                <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+        </div>
         </div>
 
         <!-- Javascript script file -->
