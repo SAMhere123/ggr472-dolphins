@@ -20,6 +20,10 @@ MAP CONTROLS: zoom, rotation, and fullscreen
 map.addControl(new mapboxgl.NavigationControl());
 map.addControl(new mapboxgl.FullscreenControl());
 
+const popup = new mapboxgl.Popup({ // Add popup const
+    closeButton: true,
+    closeOnClick: true
+});
 /*--------------------------------------------------------------------
 Step 2: VIEW GEOJSON POINT DATA ON MAP
 --------------------------------------------------------------------*/
@@ -39,7 +43,15 @@ map.on('load', () => {
         'type': 'circle', // Choose the symbol to be a circle
         'source': 'dolphins', // Get data from the dolphins data source
         'paint': {
-            'circle-radius': 5, // Set radius of dolphin points
+            'circle-radius': [ // set dolphin circle radius 
+                'interpolate',
+                ['linear'],
+                ['get', 'num_seen'],  // set radius by num_seen attribute
+                1, 2,    // when num_seen = 1, radius = 3
+                10, 4,   // when num_seen = 10, radius = 6
+                50, 10,  // when num_seen = 50, radius = 10
+                100, 15  // when num_seen = 100, radius = 15
+            ],
             'circle-color': [
                 'match',
                 ['get', 'species'], // Set colour of dolphin points based on their species (colour is tentative)
@@ -68,6 +80,27 @@ map.on('load', () => {
                 selected // show selected species
             ]);
         }
+    });
+    // CREATE POPUP ON CLICK DISPLAYING SPECIES AND NUM_SEEN
+    map.on('click', 'dolphins-pnt', (e) => {
+        const feature = e.features[0];
+        const coordinates = feature.geometry.coordinates.slice();
+        const numseen = feature.properties.num_seen;
+        const dateseen = feature.properties.date;
+        const species = feature.properties.species;
+
+        popup
+            .setLngLat(coordinates)
+            .setHTML(`<strong>${species}</strong><br>Dolphins seen: ${numseen}</strong><br>Date seen: ${dateseen}`) // display species, num_seen, and date
+            .addTo(map);
+    });
+
+    // CHANGE CURSOR ON HOVER TO INDICATE CLICKABILITY
+    map.on('mouseenter', 'dolphins-pnt', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'dolphins-pnt', () => {
+        map.getCanvas().style.cursor = '';
     });
 });
 /*--------------------------------------------------------------------
