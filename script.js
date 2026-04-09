@@ -47,8 +47,8 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['get', 'num_seen'],  // set radius by num_seen attribute
-                1, 2,    // when num_seen = 1, radius = 3
-                10, 4,   // when num_seen = 10, radius = 6
+                1, 2,    // when num_seen = 1, radius = 2
+                10, 4,   // when num_seen = 10, radius = 4
                 50, 10,  // when num_seen = 50, radius = 10
                 100, 15  // when num_seen = 100, radius = 15
             ],
