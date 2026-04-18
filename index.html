@@ -14,6 +14,8 @@
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
         type="text/css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap stylesheet link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -48,6 +50,24 @@
 </head>
 
 <body>
+    <section class="hero">
+        <!-----------------------------------------------------------------------------------------------
+        Video Background: mp4 video stored in data folder 
+        Reference: Shore Diving along the Kona Coast (2023) Diving with Very Chatty Hawaiian Spinner 
+        Dolphins ~ Listen to the dolphin sounds! [Video]. YouTube.
+        https://www.youtube.com/watch?v=g5v9ru4gCwY
+        ------------------------------------------------------------------------------------------------>
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="data/dolphin-video.mp4" type="video/mp4">
+        </video>
+
+        <!--<div class="container text-center textured-box">-->
+        <!--Heading section-->
+        <div class="hero-title">
+            <h3>Dolphin Watching in Hawaii for the Ethical Tourist</h3>
+        </div>
+    </section>
+
     <!-- Using Bootstrap to add a Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -78,63 +98,53 @@
                         <a class="nav-link" href="SustainableWatching.html">Sustainable Dolphin Watching</a>
                     </li>
                 </ul>
-               
             </div>
         </div>
     </nav>
 
-    <!-------------------------------------------------------------------------
-    Container for the main content - 
-    Centre all text inside container and set a background using JPG (or PNG) 
-    -------------------------------------------------------------------------->
-    <div class="container text-center">
-        <!--Heading section-->
-        <div class="row">
-            <h1>Dolphin Watching in Hawaii for the Ethical Tourist</h1>
-        <!-------------------------------------------------------
-        Paragraph section 
-        -------------------------------------------------------->
-            <p> Our objective is to showcase the high diversity of dolphin species
-                surrounding Hawaii, while also being aware of the effect tourism
-                and climate change has on its population. </p>
 
-        <!--------------------------------------------------------------------
-        Image section - Displayed image is stored in Data folder       
-        --------------------------------------------------------------------->
+    <!-----------------------------------------------------------------
+                    Container for the main content
+    ------------------------------------------------------------------>
+    <!-- Paragraph section -->
+    <div class="container text-center textured-box">
+        <h5 class="text-card">
+            Our objective is to showcase the high diversity of dolphin species
+            surrounding Hawaii, while also being aware of the effect tourism
+            and climate change has on its population.
+        </h5>
 
-            <!-- MAP CONTAINER -->
-            <!-----------------------------
+        <!-----------------------------------------------------------------------------------------------
             Obtained from PacIOOS (2026) 
-            ------------------------------>
-            <!-- Spatial Distribution of Dolphin Species via Satellite Tag Tracking or Direct Human Observation -->
+            Spatial Distribution of Dolphin Species via Satellite Tag Tracking or Direct Human Observation
+        ------------------------------------------------------------------------------------------------>
+        <!-- MAP CONTAINER -->
+        <div id='map' class='map'></div>
 
-
-            <!-- MAP CONTAINER -->
-            <div id='map' class='map'></div>
-
-            <!-- LEGEND -->
-            <div id='legend' class='legend'>
-                <h4>Dolphin Species Locations</h4> <!-- Title of the legend -->
-            </div>
-
-
-            <label for="species-select">Select a dolphin species:</label>
-            <select id="species-select">
-                <option value="all">All species</option>
-                <option value="bottlenose dolphin">Bottlenose Dolphin</option>
-                <option value="rough-toothed dolphin">Rough-Toothed Dolphin</option>
-                <option value="pantropical spotted dolphin">Pantropical Spotted Dolphin</option>
-                <option value="spinner dolphin">Spinner Dolphin</option>
-                <option value="Rissos dolphin">Rissos Dolphin</option>
-                <option value="striped dolphin">Striped Dolphin</option>
-                <option value="Frasers dolphin">Fraser Dolphin</option>
-            </select>
-            <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
-
-            <p> A collection of various dolphin species whose known locations have been identified
-                either via automated satellite tracking of tagged individuals or through direct human obsrvation:
-                surveys (shipborne or aerial), photography, and/or genetic sampling </p>
+        <!-- LEGEND -->
+        <div id='legend' class='legend'>
+            <h4>Dolphin Species Locations</h4> <!-- Title of the legend -->
         </div>
+
+
+        <label for="species-select">Select a dolphin species:</label>
+        <select id="species-select">
+            <option value="all">All species</option>
+            <option value="bottlenose dolphin">Bottlenose Dolphin</option>
+            <option value="rough-toothed dolphin">Rough-Toothed Dolphin</option>
+            <option value="pantropical spotted dolphin">Pantropical Spotted Dolphin</option>
+            <option value="spinner dolphin">Spinner Dolphin</option>
+            <option value="Rissos dolphin">Rissos Dolphin</option>
+            <option value="striped dolphin">Striped Dolphin</option>
+            <option value="Frasers dolphin">Fraser Dolphin</option>
+        </select>
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+
+        <p> A collection of various dolphin species whose known locations have been identified
+            either via automated satellite tracking of tagged individuals or through direct human obsrvation:
+            surveys (shipborne or aerial), photography, and/or genetic sampling
+        </p>
+
     </div>
 
     <!-- Javascript script file -->
