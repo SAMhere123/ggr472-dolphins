@@ -28,17 +28,26 @@ h4 {
     text-align: left;
 }
     
-
+/* Background image onto Nav Bar */
 .navbar {
-    background-color: rgb(95, 95, 186) !important;
-    color: rgb(255, 255, 255) !important
+    background-image: url("https://media.istockphoto.com/id/1022981984/photo/blue-sea-waves-sunlight.jpg?s=170667a&w=0&k=20&c=ls74qN3Gc9d8mkXKpRBn1QEOHR8sPCV0ATozhDR8yi8=") !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+/* Color of text on Nav Bar */
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: rgb(255, 255, 255) !important;
+        font-weight: 600;
 
-.navbar a,
-.navbar .nav-link,
-.navbar-brand {
-    color: rgb(255, 255, 255) !important;
-}
+    }
+    .navbar .nav-link:hover,
+    .navbar .navbar-brand:hover {
+        color: rgb(255, 223, 0) !important; /* example hover color */
+    }
+
+
 
 
 /* Position of web map on page */
