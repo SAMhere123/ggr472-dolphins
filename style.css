@@ -5,50 +5,112 @@
     height: 500px;
 }
 
-/* MAP OVERLAY */
-
-
+/* MAP OVERLAY */   
 h1 {
     color: rgb(5, 72, 122);
     text-align: center;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 20px;
+    margin-top: 20px;
 }
 
+/* Unsure which color title I should go with. Grayish Black or Orange? */
 h3 {
-    color: rgb(5, 72, 122);
-    font-size: 20px;
-
+    color: rgb(33, 37, 41);
+    text-align: center;
 }
+
+/*h3 {
+    color: rgb(212, 157, 5);
+     text-align: center;
+}*/
 
 h4 {
     font-size: 12px;
     text-align: left;
+    margin-left: 20px;
+    text-indent: -20px;
 }
-    
+
+h5 {
+    color: rgb(5, 72, 122);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h6 a {
+    color: grey;
+    font-size: 12px;
+}
+
+/* HERO SECTION (video background) */
+.hero {
+    position: relative;
+    height: 60vh; /* adjust height of video area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 80px;
+}
+
+#bg-video {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes video fill screen */
+    z-index: -1;       /* puts video behind everything */
+}
+
+.hero-title h3 {
+        font-family: 'Poppins', sans-serif; /* Change title font style */
+        font-size: 3.2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
 /* Background image onto Nav Bar */
 .navbar {
-    background-image: url("https://media.istockphoto.com/id/1022981984/photo/blue-sea-waves-sunlight.jpg?s=170667a&w=0&k=20&c=ls74qN3Gc9d8mkXKpRBn1QEOHR8sPCV0ATozhDR8yi8=") !important;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: rgb(5, 72, 122) !important;
+    opacity: 0.85;  
 }
-/* Color of text on Nav Bar */
-    .navbar .nav-link,
-    .navbar .navbar-brand {
-        color: rgb(255, 255, 255) !important;
-        font-weight: 600;
 
-    }
-    .navbar .nav-link:hover,
-    .navbar .navbar-brand:hover {
-        color: rgb(255, 223, 0) !important; /* example hover color */
-    }
+/* Text color of Nav Bar */
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
+}
 
+/* Hover on Nav Bar */
+.navbar .nav-link:hover,
+.navbar .navbar-brand:hover {
+    color: rgb(255, 223, 0) !important; /* hover color for nav bar */
+}
 
+.text-card {
+    background-image: url("data/ocean-waves.jpg"); /* path to image is stored in data folder */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(67, 181, 204, 0.8); /* lighten background */
+    background-blend-mode: lighten; 
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(23, 49, 78); /* darken text color */
+    font-weight: bold;
+}
 
+.textured-box {
+    margin-top: 20px; 
+}
 
 /* Position of web map on page */
 .map-container {
@@ -59,7 +121,6 @@ h4 {
 }
 
 .legend {
-    position: relative;
     bottom: 0px;
     left: 10px;
     background: white;
@@ -75,10 +136,84 @@ h4 {
 }
 
 .legend-colcircle {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 15px;
     border-radius: 50%;
     background-color: var(--legendcolour);
     margin-right: 6px;
+}
+
+/* Dolphin Species Images */
+.img1 {
+    background-image: url("data/bottlenose-dolphins.jpg"); /* Bottlenose Dolphin image is stored in data folder */
+}
+
+.species-layout {
+    display: flex;
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.image-wrapper,
+.species-text {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section {
+    width: 100%;
+    aspect-ratio: 15 / 11;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+}
+
+.species-text {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    .species-layout {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit {
+        left: 6px;        /* moves it slightly inward */
+        bottom: 6px;      /* lifts it a bit */
+        font-size: 11px;  /* keeps it readable on small screens */
+        max-width: 96.5%;   /* prevents overflow */  
+    }
 }
 
