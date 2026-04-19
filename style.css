@@ -17,16 +17,10 @@ h2 {
     margin-top: 20px;
 }
 
-/* Unsure which color title I should go with. Grayish Black or Orange? */
 h3 {
-    color: rgb(33, 37, 41);
-    text-align: center;
-}
-
-/*h3 {
     color: rgb(212, 157, 5);
      text-align: center;
-}*/
+}
 
 h4 {
     font-size: 12px;
