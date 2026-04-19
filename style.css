@@ -642,7 +642,7 @@ h6 a {
 
 /* FRASER'S DOLPHIN */
 .img7 {
-    background-image: url("data/fraser's-dolphins.jpg"); /* Spinner dolphin image is stored in data folder */
+    background-image: url("data/fraser's-dolphins.jpg"); /* Fraser's dolphin image is stored in data folder */
 }
 
 .species-layout6 {
@@ -650,7 +650,7 @@ h6 a {
     gap: 20px; /* space between columns */
     align-items: flex-start;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .image-wrapper6,
@@ -723,6 +723,17 @@ h6 a {
         max-width: 96%;   /* prevents overflow */  
     }
 }
+
+/* Box around entire reference list */
+.reference-box {
+    background: rgba(5, 72, 122, 0.08); /* soft blue tint */
+    border: 2px solid rgb(5, 72, 122);  /* color to match Nav Bar */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
 
 
 
