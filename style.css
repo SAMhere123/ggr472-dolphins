@@ -36,7 +36,7 @@ h5 {
 }
 
 h6 a {
-    color: grey;
+    color: #d0eaff; 
     font-size: 12px;
 }
 
@@ -69,7 +69,7 @@ h6 a {
         letter-spacing: 1px;
     }
 
-/* Background image onto Nav Bar */
+/* Background colour of Nav Bar */
 .navbar {
     background-color: rgb(5, 72, 122) !important;
     opacity: 0.85;  
@@ -82,12 +82,13 @@ h6 a {
     font-weight: bold;
 }
 
-/* Hover on Nav Bar */
+/* Hover color on Nav Bar */
 .navbar .nav-link:hover,
 .navbar .navbar-brand:hover {
     color: rgb(255, 223, 0) !important; /* hover color for nav bar */
 }
 
+/* Image background on 'objective' text box in Homepage section */
 .text-card {
     background-image: url("data/ocean-waves.jpg"); /* path to image is stored in data folder */
     background-size: cover;
@@ -137,16 +138,19 @@ h6 a {
     margin-right: 6px;
 }
 
-/* Dolphin Species Images */
+/*--------------------------
+ 'DOLPHIN SPECIES' IMAGES 
+ -------------------------*/
+ /*--- BOTTLENOSE DOLPHIN ---*/
 .img1 {
-    background-image: url("data/bottlenose-dolphins.jpg"); /* Bottlenose Dolphin image is stored in data folder */
+    background-image: url("data/bottlenose-dolphins.jpg"); /* Bottlenose dolphin image is stored in data folder */
 }
 
 .species-layout {
     display: flex;
     gap: 20px; /* space between columns */
     align-items: flex-start;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .image-wrapper,
@@ -171,25 +175,32 @@ h6 a {
 
 .photo-credit {
     position: absolute;
-    bottom: 8px;
-    left: 10px;
+    bottom: 8px;    /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
     margin: 0;
     padding: 4px 6px;
     background: rgba(0,0,0,0.4);
     color: white;
     font-size: 12px;
+    line-height: 1.3;
     border-radius: 4px;
     text-align: left;
     max-width: 96.7%;
 }
 
+/* Photo credit customization*/
+.photo-credit strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
 .species-text {
     padding-left: 20px;
     border-left: 3px solid #ccc;
     overflow-wrap: break-word;
 }
 
-/* Mobile fix */
+/* Mobile view fix */
 @media (max-width: 768px) {
     .species-layout {
         flex-direction: column;
@@ -204,10 +215,514 @@ h6 a {
     }
 
     .photo-credit {
-        left: 6px;        /* moves it slightly inward */
-        bottom: 6px;      /* lifts it a bit */
-        font-size: 11px;  /* keeps it readable on small screens */
-        max-width: 96.5%;   /* prevents overflow */  
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* change font size */
+        max-width: 96%;   /* prevents overflow */  
     }
 }
+
+/*--- ROUGH-TOOTHED DOLPHIN ---*/
+.img2 {
+    background-image: url("data/rough-toothed-dolphin.jpg"); /* Rough-toothed dolphin image is stored in data folder */
+}
+
+.species-layout1 {
+    display: flex;
+    flex-direction: row-reverse; /* flips image + text */
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-wrapper1,
+.species-text1 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper1 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section1 {
+    width: 100%;
+    aspect-ratio: 15 / 10;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit1 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit1 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text1 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout1 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text1 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit1 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* changes font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+}
+
+/*--- PANTROPICAL SPOTTED DOLPHIN ---*/
+.img3 {
+    background-image: url("data/pantropical-spotted-dolphins.jpg"); /* Pantropical dolphin image is stored in data folder */
+}
+
+.species-layout2 {
+    display: flex;
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-wrapper2,
+.species-text2 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper2 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section2 {
+    width: 100%;
+    aspect-ratio: 17.5 / 9;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit2 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;        /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit2 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text2 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout2 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text2 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit2 {
+        bottom: 6px;         /* moves it to the BOTTOM */
+        right: 6px;        /* moves it to the RIGHT side */
+        font-size: 11px;  /* changes font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+}
+
+/* SPINNER DOLPHIN */
+.img4 {
+    background-image: url("data/spinner-dolphins.jpg"); /* Spinner dolphin image is stored in data folder */
+}
+
+.species-layout3 {
+    display: flex;
+    flex-direction: row-reverse; /* flips image + text */
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-wrapper3,
+.species-text3 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper3 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section3 {
+    width: 100%;
+    aspect-ratio: 18 / 10;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit3 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit3 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text3 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout3 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text3 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit3 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* changes font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+}
+
+/* STRIPED DOLPHIN */
+.img5 {
+    background-image: url("data/striped-dolphin.jpg"); /* Striped dolphin image is stored in data folder */
+}
+
+.species-layout4 {
+    display: flex;
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-wrapper4,
+.species-text4 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper4 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section4 {
+    width: 100%;
+    aspect-ratio: 18 / 10;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit4 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit4 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text4 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout4 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text4 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit4 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* changes font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+}
+
+/* RISSO'S DOLPHIN */
+.img6 {
+    background-image: url("data/risso's-dolphin.jpg"); /* Risso's dolphin image is stored in data folder */
+}
+
+.species-layout5 {
+    display: flex;
+    flex-direction: row-reverse; /* flips image + text */
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.image-wrapper5,
+.species-text5 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper5 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section5 {
+    width: 100%;
+    aspect-ratio: 18 / 10;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit5 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit5 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text5 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout5 {
+        max-width: 88%;         /* narrower so it wraps earlier */
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text5 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit5 {
+        bottom: 6px;            /* moves it to the BOTTOM */
+        left: 6px;              /* moves it to the LEFT side */
+        font-size: 11px;        /* changes font size */
+        max-width: 96%;         /* prevents overflow */  
+    }
+}
+
+/* FRASER'S DOLPHIN */
+.img7 {
+    background-image: url("data/fraser's-dolphins.jpg"); /* Spinner dolphin image is stored in data folder */
+}
+
+.species-layout6 {
+    display: flex;
+    gap: 20px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.image-wrapper6,
+.species-text6 {
+    flex: 1; /* equal width */
+    min-width: 0;
+} 
+
+.image-wrapper6 {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-section6 {
+    width: 100%;
+    aspect-ratio: 18 / 10;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit6 {
+    position: absolute;
+    bottom: 8px;       /* moves it to the BOTTOM */
+    left: 10px;     /* moves it to the LEFT side */
+    margin: 0;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    max-width: 96.7%;
+    word-break: break-all;      /* forces long URLs to wrap */
+    display: inline-block;      /* ensures wrapping works consistently */
+}
+
+/* Photo credit customization*/
+.photo-credit6 strong {
+    font-weight: 600; 
+}
+
+/* Vertical line across species text */
+.species-text6 {
+    padding-left: 20px;
+    border-left: 3px solid #ccc;
+    overflow-wrap: break-word;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .species-layout6 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text6 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit6 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* changes font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+}
+
+
 
