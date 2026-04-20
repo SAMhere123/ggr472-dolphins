@@ -200,26 +200,14 @@ h6 a {
     overflow-wrap: break-word;
 }
 
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit {
-        bottom: 6px;      /* moves it to the BOTTOM */
-        left: 6px;        /* moves it to the LEFT side */
-        font-size: 11px;  /* change font size */
-        max-width: 96%;   /* prevents overflow */  
-    }
+/* Box around entire reference list */
+.reference-box {
+    background: rgba(5, 72, 122, 0.08); /* soft blue tint */
+    border: 2px solid rgb(5, 72, 122);  /* color to match Nav Bar */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 /*--- ROUGH-TOOTHED DOLPHIN ---*/
@@ -284,28 +272,6 @@ h6 a {
     overflow-wrap: break-word;
 }
 
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout1 {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text1 {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit1 {
-        bottom: 6px;      /* moves it to the BOTTOM */
-        left: 6px;        /* moves it to the LEFT side */
-        font-size: 11px;  /* changes font size */
-        max-width: 96%;   /* prevents overflow */  
-    }
-}
-
 /*--- PANTROPICAL SPOTTED DOLPHIN ---*/
 .img3 {
     background-image: url("data/pantropical-spotted-dolphins.jpg"); /* Pantropical dolphin image is stored in data folder */
@@ -350,8 +316,6 @@ h6 a {
     border-radius: 4px;
     text-align: left;
     max-width: 96.7%;
-    word-break: break-all;      /* forces long URLs to wrap */
-    display: inline-block;      /* ensures wrapping works consistently */
 }
 
 /* Photo credit customization*/
@@ -364,28 +328,6 @@ h6 a {
     padding-left: 20px;
     border-left: 3px solid #ccc;
     overflow-wrap: break-word;
-}
-
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout2 {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text2 {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit2 {
-        bottom: 6px;         /* moves it to the BOTTOM */
-        right: 6px;        /* moves it to the RIGHT side */
-        font-size: 11px;  /* changes font size */
-        max-width: 96%;   /* prevents overflow */  
-    }
 }
 
 /* SPINNER DOLPHIN */
@@ -434,8 +376,6 @@ h6 a {
     border-radius: 4px;
     text-align: left;
     max-width: 96.7%;
-    word-break: break-all;      /* forces long URLs to wrap */
-    display: inline-block;      /* ensures wrapping works consistently */
 }
 
 /* Photo credit customization*/
@@ -448,28 +388,6 @@ h6 a {
     padding-left: 20px;
     border-left: 3px solid #ccc;
     overflow-wrap: break-word;
-}
-
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout3 {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text3 {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit3 {
-        bottom: 6px;      /* moves it to the BOTTOM */
-        left: 6px;        /* moves it to the LEFT side */
-        font-size: 11px;  /* changes font size */
-        max-width: 96%;   /* prevents overflow */  
-    }
 }
 
 /* STRIPED DOLPHIN */
@@ -517,8 +435,6 @@ h6 a {
     border-radius: 4px;
     text-align: left;
     max-width: 96.7%;
-    word-break: break-all;      /* forces long URLs to wrap */
-    display: inline-block;      /* ensures wrapping works consistently */
 }
 
 /* Photo credit customization*/
@@ -533,28 +449,6 @@ h6 a {
     overflow-wrap: break-word;
 }
 
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout4 {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text4 {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit4 {
-        bottom: 6px;      /* moves it to the BOTTOM */
-        left: 6px;        /* moves it to the LEFT side */
-        font-size: 11px;  /* changes font size */
-        max-width: 96%;   /* prevents overflow */  
-    }
-}
-
 /* RISSO'S DOLPHIN */
 .img6 {
     background-image: url("data/risso's-dolphin.jpg"); /* Risso's dolphin image is stored in data folder */
@@ -563,7 +457,7 @@ h6 a {
 .species-layout5 {
     display: flex;
     flex-direction: row-reverse; /* flips image + text */
-    gap: 20px; /* space between columns */
+    gap: 20px;                   /* space between columns */
     align-items: flex-start;
     margin-top: 10px;
 }
@@ -591,7 +485,7 @@ h6 a {
 .photo-credit5 {
     position: absolute;
     bottom: 8px;       /* moves it to the BOTTOM */
-    left: 10px;     /* moves it to the LEFT side */
+    left: 10px;        /* moves it to the LEFT side */
     margin: 0;
     padding: 4px 6px;
     background: rgba(0,0,0,0.4);
@@ -615,29 +509,6 @@ h6 a {
     padding-left: 20px;
     border-left: 3px solid #ccc;
     overflow-wrap: break-word;
-}
-
-/* Mobile view fix */
-@media (max-width: 768px) {
-    .species-layout5 {
-        max-width: 88%;         /* narrower so it wraps earlier */
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .species-text5 {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .photo-credit5 {
-        bottom: 6px;            /* moves it to the BOTTOM */
-        left: 6px;              /* moves it to the LEFT side */
-        font-size: 11px;        /* changes font size */
-        max-width: 96%;         /* prevents overflow */  
-    }
 }
 
 /* FRASER'S DOLPHIN */
@@ -686,8 +557,6 @@ h6 a {
     border-radius: 4px;
     text-align: left;
     max-width: 96.7%;
-    word-break: break-all;      /* forces long URLs to wrap */
-    display: inline-block;      /* ensures wrapping works consistently */
 }
 
 /* Photo credit customization*/
@@ -702,8 +571,278 @@ h6 a {
     overflow-wrap: break-word;
 }
 
-/* Mobile view fix */
+/*-----------------------------------
+'Threats to Their Existence' Images
+-----------------------------------*/
+.img8 {
+    background-image: url("data/hook-in-mouth.jpg");   /* hook-in-mouth image is stored in data folder */
+}
+
+.img9 {
+    background-image: url("data/vessel-wound.jpg");  /* vessel-wound image is stored in data folder */
+}
+
+.species-layout7 {
+    display: flex;
+    gap: 10px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.image-wrapper7 {
+    flex: 1;                /* each image takes equal space */
+    min-width: 0;
+    position: relative;     /* prevents overflow */
+}
+
+.image-section7 {
+    width: 100%;
+    aspect-ratio: 24 / 13;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit7 {
+    position: static;   /* sits BELOW the image */
+    margin-top: 8px;    /* space between image and caption */
+    margin: 1;
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.53);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    word-break: break-word;
+}
+
+/* Photo credit customization*/
+.photo-credit7 strong {
+    font-weight: 600; 
+}
+
+/*-------------------------------------------
+'Conservation and Protection Efforts' Images
+-------------------------------------------*/
+.img10 {
+    background-image: url("data/vessel-disturbance.jpg");  /* vessel-disturbance image is stored in data folder */
+}
+
+.species-layout8 {
+    display: flex;
+    gap: 10px; /* space between columns */
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.image-wrapper8 {
+    flex: 1;                /* each image takes equal space */
+    min-width: 0;
+    position: relative;     /* prevents overflow */
+}
+
+.image-section8 {
+    width: 100%;
+    aspect-ratio: 25 / 12;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.photo-credit8 {
+    position: static;   /* sits BELOW the image */
+    margin-top: 8px;    /* space between image and caption */
+    margin: 1;
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.53);
+    color: white;
+    font-size: 12px;
+    line-height: 1.3;
+    border-radius: 4px;
+    text-align: left;
+    word-break: break-word;
+}
+
+/* Photo credit customization*/
+.photo-credit8 strong {
+    font-weight: 600; 
+}
+
+
+
+
+/*-------------------------------------------
+'Sustainable Dolphin Watching' Images
+-------------------------------------------*/
+.img11 {
+    background-image: url("data/dolphin-brochure-1.jpg");  /* dolphin-broshure-1 image is stored in data folder */
+}
+.img12 {
+    background-image: url("data/dolphin-brochure-2.jpg");  /* dolphin-broshure-2 image is stored in data folder */
+}
+
+.species-layout9 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two equal columns */
+    gap: 5px;                      /* space between columns */
+}
+
+.image-wrapper9 {
+    flex: 1;                /* each image takes equal space */
+    min-width: 0;
+    position: relative;     /* prevents overflow */
+}
+
+.image-section9 {
+    width: 100%;
+    height: auto;
+    padding-top: 80%; /* controls height without cropping */
+    background-size: contain;
+    background-repeat: no-repeat;
+     background-color: #ffffff;
+    background-position: center;
+}
+
+.photo-credit9 {
+    grid-column: 1 / -1;     /* spans full row */
+    width: 100%;
+    text-align: center;
+    
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border-radius: 6px;
+    word-break: break-word;
+}
+
+/* Photo credit customization*/
+.photo-credit9 strong {
+    font-weight: 600; 
+}
+
+/*----------------------------------------------*/
+/* Mobile view fix for all images */
 @media (max-width: 768px) {
+    .species-layout {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  /* change font size */
+        max-width: 96%;   /* prevents overflow */  
+    }
+
+    .species-layout1 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text1 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit1 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px; 
+        max-width: 96%;  
+    }
+
+    .species-layout2 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text2 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit2 {
+        bottom: 6px;         /* moves it to the BOTTOM */
+        right: 6px;        /* moves it to the RIGHT side */
+        font-size: 11px;  
+        max-width: 96%; 
+    }
+
+    .species-layout3 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text3 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit3 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px; 
+        max-width: 96%;   
+    }
+
+    .species-layout4 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text4 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit4 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  
+        max-width: 96%;   
+    }
+
+    .species-layout5 {
+        max-width: 88%;      
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .species-text5 {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .photo-credit5 {
+        bottom: 6px;            /* moves it to the BOTTOM */
+        left: 6px;              /* moves it to the LEFT side */
+        font-size: 11px;    
+        max-width: 96%;        
+    }
+
     .species-layout6 {
         flex-direction: column;
         gap: 20px;
@@ -719,21 +858,28 @@ h6 a {
     .photo-credit6 {
         bottom: 6px;      /* moves it to the BOTTOM */
         left: 6px;        /* moves it to the LEFT side */
-        font-size: 11px;  /* changes font size */
-        max-width: 96%;   /* prevents overflow */  
+        font-size: 11px;  
+        max-width: 96%;  
+    }
+
+    .species-layout7 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .photo-credit7 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  
+        max-width: 96%;   
+    }
+
+    .photo-credit8 {
+        bottom: 6px;      /* moves it to the BOTTOM */
+        left: 6px;        /* moves it to the LEFT side */
+        font-size: 11px;  
+        max-width: 96%;    
     }
 }
-
-/* Box around entire reference list */
-.reference-box {
-    background: rgba(5, 72, 122, 0.08); /* soft blue tint */
-    border: 2px solid rgb(5, 72, 122);  /* color to match Nav Bar */
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-}
-
-
-
-
