@@ -3,7 +3,7 @@ This repository contains code for a webpage with an interactive map through Mapb
 
 Webpage: -----
 
-## Key repository Contents
+## Key repository contents
 - `data folder` : Data file containing point locations of places in Toronto
 - `index.html` : HTML file to render homepage
 - `style.css` : CSS file to control style of homepage
