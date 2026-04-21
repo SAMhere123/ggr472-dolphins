@@ -4,7 +4,7 @@ This repository contains code for a webpage with an interactive map through Mapb
 Webpage: -----
 
 ## Key repository contents
-- `data folder` : Data file containing point locations of dolphin species and photos/video of dolphins
+- `data folder` : Data file containing point locations, migration, temperature, and photos/video of dolphins
 - `index.html` : HTML file to render homepage
 - `style.css` : CSS file to control style of homepage
 - `script.js` : JavaScript file to enable button interactivity within homepage
