@@ -13,17 +13,28 @@ const map = new mapboxgl.Map({
     zoom: 6,   // starting point, longitude, latitude
     minZoom: 2 // Furthest out that the map can zoom to ensure the target area is visible
 });
-
+let selected = 'all'; // by default the selected species is all
+let timeframe = 0; // by default the timeframe on the slider is all
 /*--------------------------------------------------------------------
 MAP CONTROLS: zoom, rotation, and fullscreen
 --------------------------------------------------------------------*/
 map.addControl(new mapboxgl.NavigationControl());
 map.addControl(new mapboxgl.FullscreenControl());
 
-const popup = new mapboxgl.Popup({ // Add popup const
+const popup = new mapboxgl.Popup({ // add popup const
     closeButton: true,
     closeOnClick: true
 });
+
+const intervals = [ // create labels for the slider timeframe intervals
+    { label: 'All'},
+    { label: '1993-1997', start: 1993, end: 1997 },
+    { label: '1998-2002', start: 1998, end: 2002 },
+    { label: '2003-2007', start: 2003, end: 2007 },
+    { label: '2008-2012', start: 2008, end: 2012 },
+    { label: '2013-2017', start: 2013, end: 2017 }
+];
+
 /*--------------------------------------------------------------------
 Step 2: VIEW GEOJSON POINT DATA ON MAP
 --------------------------------------------------------------------*/
@@ -69,18 +80,10 @@ map.on('load', () => {
     // CREATE DOLPHINS SPECIES FILTER
     const dropdown = document.getElementById('species-select');
     dropdown.addEventListener('change', () => { // check for dropdown box selection
-        const selected = dropdown.value;
-
-        if (selected == 'all') {
-            map.setFilter('dolphins-pnt', null); // show all species
-        } else {
-            map.setFilter('dolphins-pnt', [
-                '==',
-                ['get', 'species'],
-                selected // show selected species
-            ]);
-        }
+        selected = dropdown.value; // selected value is the dropdown value
+        applyFilters(); // use applyFilters function
     });
+
     // CREATE POPUP ON CLICK DISPLAYING SPECIES AND NUM_SEEN
     map.on('click', 'dolphins-pnt', (e) => {
         const feature = e.features[0];
@@ -102,6 +105,8 @@ map.on('load', () => {
     map.on('mouseleave', 'dolphins-pnt', () => {
         map.getCanvas().style.cursor = '';
     });
+    applyFilters();
+    document.getElementById('time-label').textContent = intervals[0].label;
 });
 /*--------------------------------------------------------------------
 CREATE LEGEND IN JAVASCRIPT
@@ -144,3 +149,31 @@ document.getElementById('returnbutton').addEventListener('click', () => { // But
         essential: true
     });
 });
+
+const slider = document.getElementById('time-slider'); // create slider
+const label = document.getElementById('time-label'); // create label for the slider
+
+slider.addEventListener('input', () => { // create slider event listener
+    timeframe = parseInt(slider.value); // timeframe is equal to the slider value
+    label.textContent = intervals[timeframe].label; // change the slider label based on the timeframe on the slider
+    applyFilters(); // use applyFilters function
+});
+
+// applyFilters function to stop timeframe and species filters from overwriting each other
+function applyFilters() {
+    let filters = ['all']; // by default the map filters to all species and no timeframe filter
+
+    // Species filter
+    if (selected !== 'all') { // if species select is not all
+        filters.push(['==', ['get', 'species'], selected]); // add selected species to filters
+    }
+
+    // Time interval filter
+    if (timeframe !== 0) { // if the slider is not in the left-most position
+    filters.push([ // add selected timeframe to filters depending on slider
+        'all',
+        ['>=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].start],
+        ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
+    }
+    map.setFilter('dolphins-pnt', filters); // apply filters to the map
+}
