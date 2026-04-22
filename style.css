@@ -14,7 +14,7 @@ h1 {
 
 h2 {
     font-size: 20px;
-    margin-top: 20px;
+    scroll-margin-top: 70px;
 }
 
 h3 {
@@ -100,6 +100,13 @@ h8 {
     color: rgb(255, 223, 0) !important; /* hover color for nav bar */
 }
 
+@media (min-width: 576px) {
+    .dropdown:hover .dropdown-menu{
+        display: block;
+        margin-top: 0;
+    }   
+}
+
 /* Image background on 'objective' text box in Homepage section */
 .text-card {
     background-image: url("data/ocean-waves.jpg"); /* path to image is stored in data folder */
@@ -116,7 +123,7 @@ h8 {
 }
 
 .textured-box {
-    margin-top: 20px; 
+    margin-top: 70px; 
 }
 
 /* Position of web map on page */

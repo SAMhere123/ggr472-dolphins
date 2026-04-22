@@ -40,7 +40,7 @@
 
 <body>
     <!--Set nav bar to navigate back to home page -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Homepage</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -52,8 +52,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- links in nav bar -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="Species.html">Dolphin Species</a>
+                     <!-- dropdown menu to jump to specific sections (species) on this page -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="Species.html" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Dolphin Species
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#bottlenose">Common Bottlenose</a></li>
+                            <li><a class="dropdown-item" href="#rough-toothed">Rough-Toothed</a></li>
+                            <li><a class="dropdown-item" href="#pantropical">Pantropical Spotted</a></li>
+                            <li><a class="dropdown-item" href="#spinner">Spinner</a></li>
+                            <li><a class="dropdown-item" href="#striped">Striped</a></li>
+                            <li><a class="dropdown-item" href="#risso">Risso</a></li>
+                            <li><a class="dropdown-item" href="#fraser">Fraser</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -76,7 +88,7 @@
     <!-- MAIN CONTENT PAGE -->
     <div class="container text-center textured-box">
         <h1> An Overview of the Seven Dolphin Species Found in Hawaiian Waters </h1>
-        <h2> Common Bottlenose Dolphin <em>(Tursiops truncatus)</em> </h2>
+        <h2 id="bottlenose"> Common Bottlenose Dolphin <em>(Tursiops truncatus)</em> </h2>
         <div class="species-layout">
             <div class="image-wrapper">
                 <section class="image-section img1"></section>
@@ -107,7 +119,7 @@
             </div>
         </div>
 
-        <h2> Rough-Toothed Dolphin <em>(Steno bredanensis)</em> </h2>
+        <h2 id="rough-toothed"> Rough-Toothed Dolphin <em>(Steno bredanensis)</em> </h2>
         <div class="species-layout1">
             <div class="image-wrapper1">
                 <section class="image-section1 img2"></section>
@@ -140,7 +152,7 @@
             </div>
         </div>
 
-        <h2> Pantropical Spotted Dolphin <em>(Stenella attenuata)</em> </h2>
+        <h2 id="pantropical"> Pantropical Spotted Dolphin <em>(Stenella attenuata)</em> </h2>
         <div class="species-layout2">
             <div class="image-wrapper2">
                 <section class="image-section2 img3"></section>
@@ -171,7 +183,7 @@
             </div>
         </div>
 
-        <h2> Spinner Dolphin <em>(Stenella longirostris)</em> </h2>
+        <h2 id="spinner"> Spinner Dolphin <em>(Stenella longirostris)</em> </h2>
         <div class="species-layout3">
             <div class="image-wrapper3">
                 <section class="image-section3 img4"></section>
@@ -200,7 +212,7 @@
             </div>
         </div>
 
-        <h2> Striped Dolphin <em>(Stenella coeruleoalba)</em> </h2>
+        <h2 id="striped"> Striped Dolphin <em>(Stenella coeruleoalba)</em> </h2>
         <div class="species-layout4">
             <div class="image-wrapper4">
                 <section class="image-section4 img5"></section>
@@ -226,7 +238,7 @@
             </div>
         </div>
 
-        <h2> Risso's Dolphin <em>(Grampus griseus)</em> </h2>
+        <h2 id="risso"> Risso's Dolphin <em>(Grampus griseus)</em> </h2>
         <div class="species-layout5">
             <div class="image-wrapper5">
                 <section class="image-section5 img6"></section>
@@ -253,7 +265,7 @@
             </div>
         </div>
 
-        <h2> Fraser's Dolphin <em>(Lagenodelphis hosei)</em> </h2>
+        <h2 id="fraser"> Fraser's Dolphin <em>(Lagenodelphis hosei)</em> </h2>
         <div class="species-layout6">
             <div class="image-wrapper6">
                 <section class="image-section6 img7"></section>
