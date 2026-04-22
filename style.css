@@ -15,6 +15,7 @@ h1 {
 h2 {
     font-size: 20px;
     scroll-margin-top: 70px;
+    margin-top: 20px;
 }
 
 h3 {
@@ -240,7 +241,7 @@ h8 {
     overflow-wrap: break-word;
 }
 
-/* Box around entire reference list */
+/* Box around entire reference list at the end of the page */
 .reference-box {
     background: rgba(5, 72, 122, 0.08); /* soft blue tint */
     border: 2px solid rgb(5, 72, 122);  /* color to match Nav Bar */
