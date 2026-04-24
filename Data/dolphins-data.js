@@ -1,4 +1,4 @@
-{
+const dolphinData = {
     "type": "FeatureCollection",
     "features": [
         {
@@ -124941,4 +124941,4 @@
             "name": "urn:ogc:def:crs:EPSG::4326"
         }
     }
-}
+};

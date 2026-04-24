@@ -46,8 +46,18 @@ map.on('load', () => {
     // Add a data source containing GeoJSON data
     map.addSource('dolphins', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/Data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
+        'data': dolphinData // Add dolphins point data source path
     });
+
+    // for spatial analysis
+    map.addSource('clusters', {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: []
+        }
+    });
+
     // 2. VISUALIZE DATA LAYERS
     map.addLayer({
         'id': 'dolphins-pnt',
@@ -77,11 +87,15 @@ map.on('load', () => {
             ]
         }
     });
-    // CREATE DOLPHINS SPECIES FILTER
-    const dropdown = document.getElementById('species-select');
-    dropdown.addEventListener('change', () => { // check for dropdown box selection
-        selected = dropdown.value; // selected value is the dropdown value
-        applyFilters(); // use applyFilters function
+
+    map.addLayer({
+        id: 'clusters-layer',
+        type: 'circle',
+        source: 'clusters',
+        paint: {
+            'circle-radius': 6,
+            'circle-color': 'pink',
+        }
     });
 
     // CREATE POPUP ON CLICK DISPLAYING SPECIES AND NUM_SEEN
@@ -106,7 +120,6 @@ map.on('load', () => {
         map.getCanvas().style.cursor = '';
     });
     applyFilters();
-    document.getElementById('time-label').textContent = intervals[0].label;
 });
 /*--------------------------------------------------------------------
 CREATE LEGEND IN JAVASCRIPT
@@ -119,7 +132,8 @@ const legenditems = [
     { label: 'Spinner Dolphin', colour: '#adbd00' }, // light green for spinner dolphin
     { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
     { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
-    { label: 'Frasers Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
+    { label: 'Frasers Dolphin', colour: '#5589f9' }, // dark blue for fraser dolphin
+    { label: 'Hotspot Cluster', colour: '#000000' } // black for hotspot clusters
 ];
 
 // For each array item create a row to put the label and colour in
@@ -150,14 +164,68 @@ document.getElementById('returnbutton').addEventListener('click', () => { // But
     });
 });
 
+document.getElementById('time-label').textContent = intervals[0].label;
+
 const slider = document.getElementById('time-slider'); // create slider
 const label = document.getElementById('time-label'); // create label for the slider
 
+let timeout;
+
 slider.addEventListener('input', () => { // create slider event listener
+    clearTimeout(timeout);
+    
     timeframe = parseInt(slider.value); // timeframe is equal to the slider value
     label.textContent = intervals[timeframe].label; // change the slider label based on the timeframe on the slider
-    applyFilters(); // use applyFilters function
+    timeout = setTimeout(() => {
+        applyFilters();
+    }, 50);
 });
+
+function getFilteredFeatures() {
+    let features = dolphinData.features;
+
+    // species filter
+    if (selected !== 'all') {
+        features = features.filter(f => f.properties.species === selected);
+    }
+
+    // timeframe filter
+    if (timeframe !== 0) {
+        const { start, end } = intervals[timeframe];
+
+        features = features.filter(f => {
+            const year = parseInt(f.properties.date.slice(0, 4));
+            return year >= start && year <= end;
+        });
+    }
+
+    return features;
+}
+
+function computeClusters(features) {
+    if (!features.length) return [];
+
+    const fc = turf.featureCollection(features);
+
+    const clustered = turf.clustersDbscan(fc, {
+        maxDistance: 20,
+        minPoints: 3
+    });
+
+    const groups = {};
+
+    clustered.features.forEach(f => {
+        const id = f.properties.cluster;
+        if (id === undefined) return;
+
+        if (!groups[id]) groups[id] = [];
+        groups[id].push(f);
+    });
+
+    return Object.values(groups).map(group =>
+        turf.centroid(turf.featureCollection(group))
+    );
+}
 
 // applyFilters function to stop timeframe and species filters from overwriting each other
 function applyFilters() {
@@ -176,4 +244,12 @@ function applyFilters() {
         ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
     }
     map.setFilter('dolphins-pnt', filters); // apply filters to the map
+
+    const filtered = getFilteredFeatures();
+    const centroids = computeClusters(filtered);
+
+    map.getSource('clusters').setData({
+        type: 'FeatureCollection',
+        features: centroids
+    });
 }
