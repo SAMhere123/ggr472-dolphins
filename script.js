@@ -133,7 +133,7 @@ const legenditems = [
     { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
     { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
     { label: 'Frasers Dolphin', colour: '#5589f9' }, // dark blue for fraser dolphin
-    { label: 'Hotspot Cluster', colour: '#ee55f9' } // black for hotspot clusters
+    { label: 'Hotspot Cluster', colour: '#ee55f9' } // purple for hotspot clusters
 ];
 
 // For each array item create a row to put the label and colour in
