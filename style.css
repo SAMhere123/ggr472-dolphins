@@ -115,7 +115,7 @@ h8 {
 
 /* Image background on 'objective' text box in Homepage section */
 .text-card {
-    background-image: url("data/ocean-waves.jpg");
+    background-image: url("Data/ocean-waves.jpg");
     /* path to image is stored in data folder */
     background-size: cover;
     background-repeat: no-repeat;
@@ -193,7 +193,7 @@ h8 {
  -------------------------*/
 /*--- BOTTLENOSE DOLPHIN ---*/
 .img1 {
-    background-image: url("data/bottlenose-dolphins.jpg");
+    background-image: url("Data/bottlenose-dolphins.jpg");
     /* Bottlenose dolphin image is stored in data folder */
 }
 
@@ -273,7 +273,7 @@ h8 {
 
 /*--- ROUGH-TOOTHED DOLPHIN ---*/
 .img2 {
-    background-image: url("data/rough-toothed-dolphin.jpg");
+    background-image: url("Data/rough-toothed-dolphin.jpg");
     /* Rough-toothed dolphin image is stored in data folder */
 }
 
@@ -345,7 +345,7 @@ h8 {
 
 /*--- PANTROPICAL SPOTTED DOLPHIN ---*/
 .img3 {
-    background-image: url("data/pantropical-spotted-dolphins.jpg");
+    background-image: url("Data/pantropical-spotted-dolphins.jpg");
     /* Pantropical dolphin image is stored in data folder */
 }
 
@@ -410,7 +410,7 @@ h8 {
 
 /* SPINNER DOLPHIN */
 .img4 {
-    background-image: url("data/spinner-dolphins.jpg");
+    background-image: url("Data/spinner-dolphins.jpg");
     /* Spinner dolphin image is stored in data folder */
 }
 
@@ -478,7 +478,7 @@ h8 {
 
 /* STRIPED DOLPHIN */
 .img5 {
-    background-image: url("data/striped-dolphin.jpg");
+    background-image: url("Data/striped-dolphin.jpg");
     /* Striped dolphin image is stored in data folder */
 }
 
@@ -544,7 +544,7 @@ h8 {
 
 /* RISSO'S DOLPHIN */
 .img6 {
-    background-image: url("data/risso's-dolphin.jpg");
+    background-image: url("Data/risso's-dolphin.jpg");
     /* Risso's dolphin image is stored in data folder */
 }
 
@@ -616,7 +616,7 @@ h8 {
 
 /* FRASER'S DOLPHIN */
 .img7 {
-    background-image: url("data/fraser's-dolphins.jpg");
+    background-image: url("Data/fraser's-dolphins.jpg");
     /* Fraser's dolphin image is stored in data folder */
 }
 
@@ -685,12 +685,12 @@ h8 {
 'Threats to Their Existence' Images
 -----------------------------------*/
 .img8 {
-    background-image: url("data/hook-in-mouth.jpg");
+    background-image: url("Data/hook-in-mouth.jpg");
     /* hook-in-mouth image is stored in data folder */
 }
 
 .img9 {
-    background-image: url("data/vessel-wound.jpg");
+    background-image: url("Data/vessel-wound.jpg");
     /* vessel-wound image is stored in data folder */
 }
 
@@ -747,7 +747,7 @@ h8 {
 'Conservation and Protection Efforts' Images
 -------------------------------------------*/
 .img10 {
-    background-image: url("data/vessel-disturbance.jpg");
+    background-image: url("Data/vessel-disturbance.jpg");
     /* vessel-disturbance image is stored in data folder */
 }
 
@@ -802,12 +802,12 @@ h8 {
 'Sustainable Dolphin Watching' Images
 -------------------------------------------*/
 .img11 {
-    background-image: url("data/dolphin-brochure-1.jpg");
+    background-image: url("Data/dolphin-brochure-1.jpg");
     /* dolphin-brohure-1 image is stored in data folder */
 }
 
 .img12 {
-    background-image: url("data/dolphin-brochure-2.jpg");
+    background-image: url("Data/dolphin-brochure-2.jpg");
     /* dolphin-brochure-2 image is stored in data folder */
 }
 
