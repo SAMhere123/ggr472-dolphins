@@ -179,3 +179,124 @@ function applyFilters() {
     }
     map.setFilter('dolphins-pnt', filters); // apply filters to the map
 }
+
+/*--------------------------------------------------------------------
+VIEW GEOJSON POINT DATA ON MAP - Temperature station data
+--------------------------------------------------------------------*/
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGVyZTEyMyIsImEiOiJjbWtkbnFtNXAwZW9iM2Zwcjc3eWZpMjFsIn0.xMGFvUR2mK0MK7uEbzr2MQ'; // *** Add Mapbox access token ***
+//load the map
+map.on('load', () => {
+
+    // Add a data source containing GeoJSON data
+    map.addSource('stations', {
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/Data/station_data_temp_1993_2017.geojson' // Add temperature data source path
+    });
+
+    map.addLayer({
+        id: 'dolphin-heat',
+        type: 'heatmap',
+        source: 'dolphins',
+        maxzoom: 12,
+        paint: {
+            'heatmap-weight': [
+                'interpolate',
+                ['linear'],
+                ['get', 'num_seen'],
+                1, 0.2,
+                100, 1
+            ],
+            'heatmap-intensity': 1.2,
+            'heatmap-radius': 40,
+            'heatmap-opacity': 0.75,
+            'heatmap-color': [
+                'interpolate',
+                ['linear'],
+                ['heatmap-density'],
+                0, 'rgba(0,0,255,0)',
+                0.2, 'blue',
+                0.4, 'cyan',
+                0.6, 'lime',
+                0.8, 'yellow',
+                1, 'red'
+            ]
+        }
+    });
+
+    map.addSource('dolphins', {
+        type: 'geojson',
+        data: 'your_dolphin_data.geojson',
+        cluster: true,
+        clusterMaxZoom: 12,
+        clusterRadius: 40
+    });
+
+    map.addLayer({
+        id: 'dolphin-clusters',
+        type: 'circle',
+        source: 'dolphins',
+        filter: ['has', 'point_count'],
+        paint: {
+            'circle-color': [
+                'step',
+                ['get', 'point_count'],
+                '#66c2a5', 10,
+                '#fc8d62', 50,
+                '#8da0cb', 100,
+                '#e78ac3'
+            ],
+            'circle-radius': [
+                'step',
+                ['get', 'point_count'],
+                15, 10,
+                20, 50,
+                30, 100,
+                40
+            ]
+        }
+    });
+
+    Promise.all([
+        fetch('data/hi_pacioos_all_dolphins.geojson').then(r => r.json()),
+        fetch('station_data_temp_1993_2017.geojson').then(r => r.json())
+    ]).then(([dolphins, stations]) => {
+
+        stations.features.forEach(st => {
+            const [lon, lat] = st.geometry.coordinates;
+            let count = 0;
+
+            dolphins.features.forEach(df => {
+                const [dlon, dlat] = df.geometry.coordinates;
+
+                const dist = turf.distance([lon, lat], [dlon, dlat], { units: 'kilometers' });
+
+                if (dist <= 10) count++;   // 10 km radius
+            });
+
+            st.properties.dolphin_count = count;
+        });
+        map.addSource('stations-hot', {
+            type: 'geojson',
+            data: stations
+        });
+
+        map.addLayer({
+            id: 'station-hotspots',
+            type: 'circle',
+            source: 'stations-hot',
+            paint: {
+                'circle-radius': 8,
+                'circle-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 'dolphin_count'],
+                    0, '#2c7bb6',
+                    10, '#abd9e9',
+                    20, '#ffffbf',
+                    40, '#fdae61',
+                    80, '#d7191c'
+                ]
+            }
+        });
+    });
+});
