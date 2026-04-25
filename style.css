@@ -188,6 +188,18 @@ h8 {
     margin-bottom: 20px;
 }
 
+#temp-selector {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    font-family: sans-serif;
+    z-index: 2;
+}
+
+
 /*--------------------------
  'DOLPHIN SPECIES' IMAGES 
  -------------------------*/
