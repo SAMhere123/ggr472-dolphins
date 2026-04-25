@@ -1,4 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbmphbmEiLCJhIjoiY21rNGdpc3BoMDdiNzNlb3Yxbm02dGpwOCJ9.xYpWe_CkRr_Oe_Q-DtaVYw'; // *** Add Mapbox access token ***
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGVyZTEyMyIsImEiOiJjbWtkbnFtNXAwZW9iM2Zwcjc3eWZpMjFsIn0.xMGFvUR2mK0MK7uEbzr2MQ';
 
 //Initialize map
 const map = new mapboxgl.Map({
@@ -36,7 +37,7 @@ const intervals = [ // create labels for the slider timeframe intervals
 ];
 
 /*--------------------------------------------------------------------
-VIEW GEOJSON POINT DATA ON MAP - Dolphin Sightings
+VIEW GEOJSON POINT DATA ON MAP - Dolphin Sightings 
 --------------------------------------------------------------------*/
 
 // Load the map
@@ -109,83 +110,11 @@ map.on('load', () => {
     });
     applyFilters();
     document.getElementById('time-label').textContent = intervals[0].label;
-});
-/*--------------------------------------------------------------------
-CREATE LEGEND IN JAVASCRIPT
---------------------------------------------------------------------*/
-// Declare array variables for labels and colours (ALL COLOURS ARE TENTATIVE)
-const legenditems = [
-    { label: 'Bottlenose Dolphin', colour: '#fd3c3c' }, // red for bottlenose dolphin
-    { label: 'Rough Toothed Dolphin', colour: '#fc972a' }, // orange for rough toothed dolphin
-    { label: 'Pantropical Spotted Dolphin', colour: '#e3e01a' }, // yellow for pantropical spotted dolphin
-    { label: 'Spinner Dolphin', colour: '#adbd00' }, // light green for spinner dolphin
-    { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
-    { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
-    { label: 'Frasers Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
-];
 
-// For each array item create a row to put the label and colour in
-legenditems.forEach(({ label, colour }) => {
-    const row = document.createElement('div'); // each item gets a 'row' as a div - this isn't in the legend yet, we do this later
-    const colcircle = document.createElement('span'); // create span for colour circle
 
-    colcircle.className = 'legend-colcircle'; // the colcircle will take on the shape and style properties defined in css
-    colcircle.style.setProperty('--legendcolour', colour); // a custom property is used to take the colour from the array and apply it to the css class
-
-    const text = document.createElement('span'); // create span for label text
-    text.textContent = label; // set text variable to tlegend label value in array
-
-    row.append(colcircle, text); // add circle and text to legend row
-    legend.appendChild(row); // add row to legend container
-});
-
-/*--------------------------------------------------------------------
-ADD INTERACTIVITY BASED ON HTML EVENT
---------------------------------------------------------------------*/
-
-// 1) Add event listener which returns map view to full screen on button click using flyTo method
-document.getElementById('returnbutton').addEventListener('click', () => { // Button that is triggered by a click
-    map.flyTo({
-        center: [-156.3, 20.8], // Clicking the button moves to these starting coordinates
-        zoom: 6, // Clicking the button returns the zoom to 6
-        essential: true
-    });
-});
-
-const slider = document.getElementById('time-slider'); // create slider
-const label = document.getElementById('time-label'); // create label for the slider
-
-slider.addEventListener('input', () => { // create slider event listener
-    timeframe = parseInt(slider.value); // timeframe is equal to the slider value
-    label.textContent = intervals[timeframe].label; // change the slider label based on the timeframe on the slider
-    applyFilters(); // use applyFilters function
-});
-
-// applyFilters function to stop timeframe and species filters from overwriting each other
-function applyFilters() {
-    let filters = ['all']; // by default the map filters to all species and no timeframe filter
-
-    // Species filter
-    if (selected !== 'all') { // if species select is not all
-        filters.push(['==', ['get', 'species'], selected]); // add selected species to filters
-    }
-
-    // Time interval filter
-    if (timeframe !== 0) { // if the slider is not in the left-most position
-        filters.push([ // add selected timeframe to filters depending on slider
-            'all',
-            ['>=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].start],
-            ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
-    }
-    map.setFilter('dolphins-pnt', filters); // apply filters to the map
-}
-
-/*--------------------------------------------------------------------
-VIEW GEOJSON POINT DATA ON MAP - Temperature station data
---------------------------------------------------------------------*/
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGVyZTEyMyIsImEiOiJjbWtkbnFtNXAwZW9iM2Zwcjc3eWZpMjFsIn0.xMGFvUR2mK0MK7uEbzr2MQ'; // *** Add Mapbox access token ***
-//load the map
-map.on('load', () => {
+    /*--------------------------------------------------------------------
+    VIEW GEOJSON POINT DATA ON MAP - Temperature station data
+    --------------------------------------------------------------------*/
 
     // Add a data source containing GeoJSON data
     map.addSource('stations', {
@@ -337,4 +266,84 @@ map.on('load', () => {
             showPopup(clicked);
         }
     });
+
 });
+/*--------------------------------------------------------------------
+CREATE LEGEND IN JAVASCRIPT
+--------------------------------------------------------------------*/
+// Declare array variables for labels and colours (ALL COLOURS ARE TENTATIVE)
+const legenditems = [
+    { label: 'Bottlenose Dolphin', colour: '#fd3c3c' }, // red for bottlenose dolphin
+    { label: 'Rough Toothed Dolphin', colour: '#fc972a' }, // orange for rough toothed dolphin
+    { label: 'Pantropical Spotted Dolphin', colour: '#e3e01a' }, // yellow for pantropical spotted dolphin
+    { label: 'Spinner Dolphin', colour: '#adbd00' }, // light green for spinner dolphin
+    { label: 'Rissos Dolphin', colour: '#008015' }, // dark green for rissos dolphin
+    { label: 'Striped Dolphin', colour: '#55e0f9' }, // light blue for striped dolphin
+    { label: 'Frasers Dolphin', colour: '#5589f9' } // dark blue for fraser dolphin
+];
+
+// For each array item create a row to put the label and colour in
+legenditems.forEach(({ label, colour }) => {
+    const row = document.createElement('div'); // each item gets a 'row' as a div - this isn't in the legend yet, we do this later
+    const colcircle = document.createElement('span'); // create span for colour circle
+
+    colcircle.className = 'legend-colcircle'; // the colcircle will take on the shape and style properties defined in css
+    colcircle.style.setProperty('--legendcolour', colour); // a custom property is used to take the colour from the array and apply it to the css class
+
+    const text = document.createElement('span'); // create span for label text
+    text.textContent = label; // set text variable to tlegend label value in array
+
+    row.append(colcircle, text); // add circle and text to legend row
+    legend.appendChild(row); // add row to legend container
+});
+
+/*--------------------------------------------------------------------
+ADD INTERACTIVITY BASED ON HTML EVENT
+--------------------------------------------------------------------*/
+
+// 1) Add event listener which returns map view to full screen on button click using flyTo method
+document.getElementById('returnbutton').addEventListener('click', () => { // Button that is triggered by a click
+    map.flyTo({
+        center: [-156.3, 20.8], // Clicking the button moves to these starting coordinates
+        zoom: 6, // Clicking the button returns the zoom to 6
+        essential: true
+    });
+});
+
+const slider = document.getElementById('time-slider'); // create slider
+const label = document.getElementById('time-label'); // create label for the slider
+
+slider.addEventListener('input', () => { // create slider event listener
+    timeframe = parseInt(slider.value); // timeframe is equal to the slider value
+    label.textContent = intervals[timeframe].label; // change the slider label based on the timeframe on the slider
+    applyFilters(); // use applyFilters function
+});
+
+// applyFilters function to stop timeframe and species filters from overwriting each other
+function applyFilters() {
+    let filters = ['all']; // by default the map filters to all species and no timeframe filter
+
+    // Species filter
+    if (selected !== 'all') { // if species select is not all
+        filters.push(['==', ['get', 'species'], selected]); // add selected species to filters
+    }
+
+    // Time interval filter
+    if (timeframe !== 0) { // if the slider is not in the left-most position
+        filters.push([ // add selected timeframe to filters depending on slider
+            'all',
+            ['>=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].start],
+            ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
+    }
+    map.setFilter('dolphins-pnt', filters); // apply filters to the map
+}
+
+/*--------------------------------------------------------------------
+VIEW GEOJSON POINT DATA ON MAP - Temperature station data
+--------------------------------------------------------------------*/
+//mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGVyZTEyMyIsImEiOiJjbWtkbnFtNXAwZW9iM2Zwcjc3eWZpMjFsIn0.xMGFvUR2mK0MK7uEbzr2MQ'; // *** Add Mapbox access token ***
+//load the map
+//map.on('load', () => {
+
+
+//});
