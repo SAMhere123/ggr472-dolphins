@@ -1,7 +1,7 @@
 # Dolphin Watching in Hawaii for the Ethical Tourist
 This repository contains code for a webpage with an interactive map through Mapbox GL JS
 
-Webpage:https://samhere123.github.io/ggr472-dolphins/index.html
+Webpage: https://samhere123.github.io/ggr472-dolphins/index.html
 
 ## Key repository contents
 - `data folder` : Data file containing point locations, migration, temperature, and photos/video of dolphins
