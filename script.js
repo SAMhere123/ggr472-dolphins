@@ -321,7 +321,7 @@ map.on('load', () => {
 
         function showStation(id) {
             const f = map.querySourceFeatures('stations').find(x => x.properties.OBJECTID == id);
-        // show popup with full details
+            // show popup with full details
         }
         const feature = e.features[0];
         const props = feature.properties;
@@ -336,6 +336,5 @@ map.on('load', () => {
         } else {
             showPopup(clicked);
         }
-
     });
 });
