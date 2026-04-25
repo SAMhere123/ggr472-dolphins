@@ -1,18 +1,3 @@
-const btn = document.getElementById("cascadia");
-btn.addEventListener("click", () => {
-    window.open("https://cascadiaresearch.org/support_crc/", "_blank");
-});
-
-const btn2 = document.getElementById("nmfs");
-btn2.addEventListener("click", () => {
-    window.open("https://marinesanctuary.org/get-involved/ways-to-give/", "_blank");
-});
-
-const btn3 = document.getElementById("hwf");
-btn3.addEventListener("click", () => {
-    window.open("https://www.wildhawaii.org/donate/", "_blank");
-});
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbmphbmEiLCJhIjoiY21rNGdpc3BoMDdiNzNlb3Yxbm02dGpwOCJ9.xYpWe_CkRr_Oe_Q-DtaVYw'; // *** Add Mapbox access token ***
 
 //Initialize map
@@ -112,7 +97,13 @@ map.on('load', () => {
             'circle-color': '#ee55f9',
         }
     });
-
+    // CREATE DOLPHINS SPECIES FILTER
+    const dropdown = document.getElementById('species-select');
+    dropdown.addEventListener('change', () => { // check for dropdown box selection
+        selected = dropdown.value; // selected value is the dropdown value
+        applyFilters(); // use applyFilters function
+    });
+    
     // CREATE POPUP ON CLICK DISPLAYING SPECIES AND NUM_SEEN
     map.on('click', 'dolphins-pnt', (e) => {
         const feature = e.features[0];
@@ -222,7 +213,7 @@ function computeClusters(features) {
 
     const fc = turf.featureCollection(features);
 
-    const clustered = turf.clustersDbscan(fc, 5, {
+    const clustered = turf.clustersDbscan(fc, 20, {
         minPoints: 3
     });
 
