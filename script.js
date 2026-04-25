@@ -194,17 +194,17 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        id: 'dolphin-heat',
+        id: 'temp-heatmap',
         type: 'heatmap',
-        source: 'dolphins',
+        source: 'stations',
         maxzoom: 12,
         paint: {
             'heatmap-weight': [
                 'interpolate',
                 ['linear'],
-                ['get', 'num_seen'],
-                1, 0.2,
-                100, 1
+                ['get', 'X1993.01'],   // or your averaged temp expression
+                10, 0.2,
+                30, 1
             ],
             'heatmap-intensity': 1.2,
             'heatmap-radius': 40,
@@ -223,80 +223,19 @@ map.on('load', () => {
         }
     });
 
-    map.addSource('dolphins', {
-        type: 'geojson',
-        data: 'your_dolphin_data.geojson',
-        cluster: true,
-        clusterMaxZoom: 12,
-        clusterRadius: 40
-    });
+    map.setLayoutProperty('temp-heatmap', 'visibility', 'none');
 
-    map.addLayer({
-        id: 'dolphin-clusters',
-        type: 'circle',
-        source: 'dolphins',
-        filter: ['has', 'point_count'],
-        paint: {
-            'circle-color': [
-                'step',
-                ['get', 'point_count'],
-                '#66c2a5', 10,
-                '#fc8d62', 50,
-                '#8da0cb', 100,
-                '#e78ac3'
-            ],
-            'circle-radius': [
-                'step',
-                ['get', 'point_count'],
-                15, 10,
-                20, 50,
-                30, 100,
-                40
-            ]
+    document.getElementById('toggle-heatmap').addEventListener('click', () => {
+        const btn = document.getElementById('toggle-heatmap');
+        const visibility = map.getLayoutProperty('temp-heatmap', 'visibility');
+
+        if (visibility === 'none' || visibility === undefined) {
+            map.setLayoutProperty('temp-heatmap', 'visibility', 'visible');
+            btn.textContent = "Hide Temperature Heatmap";
+        } else {
+            map.setLayoutProperty('temp-heatmap', 'visibility', 'none');
+            btn.textContent = "Show Temperature Heatmap";
         }
     });
 
-    Promise.all([
-        fetch('data/hi_pacioos_all_dolphins.geojson').then(r => r.json()),
-        fetch('station_data_temp_1993_2017.geojson').then(r => r.json())
-    ]).then(([dolphins, stations]) => {
-
-        stations.features.forEach(st => {
-            const [lon, lat] = st.geometry.coordinates;
-            let count = 0;
-
-            dolphins.features.forEach(df => {
-                const [dlon, dlat] = df.geometry.coordinates;
-
-                const dist = turf.distance([lon, lat], [dlon, dlat], { units: 'kilometers' });
-
-                if (dist <= 10) count++;   // 10 km radius
-            });
-
-            st.properties.dolphin_count = count;
-        });
-        map.addSource('stations-hot', {
-            type: 'geojson',
-            data: stations
-        });
-
-        map.addLayer({
-            id: 'station-hotspots',
-            type: 'circle',
-            source: 'stations-hot',
-            paint: {
-                'circle-radius': 8,
-                'circle-color': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'dolphin_count'],
-                    0, '#2c7bb6',
-                    10, '#abd9e9',
-                    20, '#ffffbf',
-                    40, '#fdae61',
-                    80, '#d7191c'
-                ]
-            }
-        });
-    });
 });
