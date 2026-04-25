@@ -222,8 +222,7 @@ function computeClusters(features) {
 
     const fc = turf.featureCollection(features);
 
-    const clustered = turf.clustersDbscan(fc, {
-        maxDistance: 20,
+    const clustered = turf.clustersDbscan(fc, 20, {
         minPoints: 3
     });
 
