@@ -3,13 +3,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbmphbmEiLCJhIjoiY21rNGdpc3BoMDdiNzNlb3Yxb
 //Initialize map
 const map = new mapboxgl.Map({
     container: 'map',   // container id in HTML
-    style: 'mapbox://styles/mapbox/standard',   //***Add map style here ***
+    style: 'mapbox://styles/mapbox/standard',   //*** Add map style here ***
     config: {
         basemap: {
             theme: "standard"
         }
     },
-    center: [-156.3, 20.8], // Rough coordinates for the Hawaii (can change later)
+    center: [-156.3, 20.8], // coordinates for map of Hawaii
     zoom: 6,   // starting point, longitude, latitude
     minZoom: 2 // Furthest out that the map can zoom to ensure the target area is visible
 });
@@ -27,7 +27,7 @@ const popup = new mapboxgl.Popup({ // add popup const
 });
 
 const intervals = [ // create labels for the slider timeframe intervals
-    { label: 'All'},
+    { label: 'All' },
     { label: '1993-1997', start: 1993, end: 1997 },
     { label: '1998-2002', start: 1998, end: 2002 },
     { label: '2003-2007', start: 2003, end: 2007 },
@@ -36,7 +36,7 @@ const intervals = [ // create labels for the slider timeframe intervals
 ];
 
 /*--------------------------------------------------------------------
-Step 2: VIEW GEOJSON POINT DATA ON MAP
+VIEW GEOJSON POINT DATA ON MAP - Dolphin Sightings
 --------------------------------------------------------------------*/
 
 // Load the map
@@ -48,6 +48,7 @@ map.on('load', () => {
         'type': 'geojson',
         'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/Data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
     });
+
     // 2. VISUALIZE DATA LAYERS
     map.addLayer({
         'id': 'dolphins-pnt',
@@ -77,6 +78,7 @@ map.on('load', () => {
             ]
         }
     });
+
     // CREATE DOLPHINS SPECIES FILTER
     const dropdown = document.getElementById('species-select');
     dropdown.addEventListener('change', () => { // check for dropdown box selection
@@ -170,10 +172,10 @@ function applyFilters() {
 
     // Time interval filter
     if (timeframe !== 0) { // if the slider is not in the left-most position
-    filters.push([ // add selected timeframe to filters depending on slider
-        'all',
-        ['>=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].start],
-        ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
+        filters.push([ // add selected timeframe to filters depending on slider
+            'all',
+            ['>=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].start],
+            ['<=', ['to-number', ['slice', ['get', 'date'], 0, 4]], intervals[timeframe].end]]);
     }
     map.setFilter('dolphins-pnt', filters); // apply filters to the map
 }
