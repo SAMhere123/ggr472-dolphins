@@ -238,4 +238,102 @@ map.on('load', () => {
         }
     });
 
+
+    /*-----------------------------------------------------------------------------*/
+
+
+    function generateFields(start, end) {
+        const fields = [];
+        for (let y = start; y <= end; y++) {
+            for (let m = 1; m <= 12; m++) {
+                const mm = m.toString().padStart(2, '0');
+                fields.push(`X${y}.${mm}`);
+            }
+        }
+        return fields;
+    }
+
+    map.addLayer({
+        id: 'station-temp',
+        type: 'circle',
+        source: 'stations',
+        paint: {
+            'circle-radius': 4,
+            'circle-color': '#521163'
+        }
+    });
+
+    function updateTemperatureLayer() {
+        if (timeframe === 0) {
+            // Show neutral color when "All" is selected
+            map.setPaintProperty('station-temp', 'circle-color', '#521163');
+            return;
+        }
+
+        const fields = tempFields[timeframe];
+        const sumExpression = ['+', ...fields.map(f => ['to-number', ['get', f]])];     // Build a Mapbox expression that averages all fields
+        const avgExpression = ['/', sumExpression, fields.length];
+
+        map.setPaintProperty('station-temp', 'circle-color', [
+            'interpolate',
+            ['linear'],
+            avgExpression,
+            10, '#2c7bb6',
+            20, '#abd9e9',
+            25, '#ffffbf',
+            30, '#fdae61',
+            35, '#d7191c'
+        ]);
+    }
+
+    map.on('click', 'station-temp', (e) => {
+        const feature = e.features[0];
+        const props = feature.properties;
+
+        new mapboxgl.Popup()
+            .setLngLat(feature.geometry.coordinates)
+            .setHTML(`
+                <strong>${props["Station.Name"]}</strong><br>
+                Lat: ${props["LAT"]}, Long: ${props["LON"]}<br>
+                Elevation: ${props["ELEV.m."]} m<br>
+                Date: 1993.01, Temp: ${props["X1993.01"]} °C
+            `)
+            .addTo(map);
+    });
+
+    //Change cursor on hover
+    map.on(`mouseenter`, `station-temp`, () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'station-temp', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
+    let html = `<strong>${overlapping.length} stations here:</strong><br><br>`;
+
+    overlapping.forEach((f, i) => {
+        html += `<button onclick="showStation(${f.properties.OBJECTID})">
+                       ${f.properties["Station.Name"]}
+                   </button><br>`;
+
+
+        function showStation(id) {
+            const f = map.querySourceFeatures('stations').find(x => x.properties.OBJECTID == id);
+        // show popup with full details
+        }
+        const feature = e.features[0];
+        const props = feature.properties;
+
+        const overlapping = map.queryRenderedFeatures({
+            layers: ['station-temp'],
+            filter: ['==', ['get', 'LAT'], clicked.properties.LAT]
+        });
+
+        if (overlapping.length > 1) {
+            expandPoints(overlapping);
+        } else {
+            showPopup(clicked);
+        }
+
+    });
 });
