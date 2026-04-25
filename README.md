@@ -5,6 +5,7 @@ Webpage: -----
 
 ## Key repository contents
 - `Data folder` : Data file containing point locations, migration, temperature, and photos/video of dolphins
+    - `dolphins-data.js` : JavaScript file containing geoJSON of dolphin sighting data
 - `index.html` : HTML file to render homepage
 - `style.css` : CSS file to control style of homepage
 - `script.js` : JavaScript file to enable button interactivity within homepage

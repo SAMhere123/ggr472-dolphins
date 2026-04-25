@@ -46,7 +46,7 @@ map.on('load', () => {
     // Add a data source containing GeoJSON data
     map.addSource('dolphins', {
         'type': 'geojson',
-        'data': 'https://raw.githubusercontent.com/SAMhere123/ggr472-dolphins/main/Data/hi_pacioos_all_dolphins.geojson' // Add dolphins point data source path
+        'data': dolphinData // Add dolphins point data source path
     });
 
     // for spatial analysis
