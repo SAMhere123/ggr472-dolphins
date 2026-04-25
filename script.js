@@ -1,3 +1,18 @@
+const btn = document.getElementById("cascadia");
+btn.addEventListener("click", () => {
+    window.open("https://cascadiaresearch.org/support_crc/", "_blank");
+});
+
+const btn2 = document.getElementById("nmfs");
+btn2.addEventListener("click", () => {
+    window.open("https://marinesanctuary.org/get-involved/ways-to-give/", "_blank");
+});
+
+const btn3 = document.getElementById("hwf");
+btn3.addEventListener("click", () => {
+    window.open("https://www.wildhawaii.org/donate/", "_blank");
+});
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hlbmphbmEiLCJhIjoiY21rNGdpc3BoMDdiNzNlb3Yxbm02dGpwOCJ9.xYpWe_CkRr_Oe_Q-DtaVYw'; // *** Add Mapbox access token ***
 
 //Initialize map
