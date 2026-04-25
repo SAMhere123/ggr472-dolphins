@@ -337,13 +337,3 @@ function applyFilters() {
     }
     map.setFilter('dolphins-pnt', filters); // apply filters to the map
 }
-
-/*--------------------------------------------------------------------
-VIEW GEOJSON POINT DATA ON MAP - Temperature station data
---------------------------------------------------------------------*/
-//mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtaGVyZTEyMyIsImEiOiJjbWtkbnFtNXAwZW9iM2Zwcjc3eWZpMjFsIn0.xMGFvUR2mK0MK7uEbzr2MQ'; // *** Add Mapbox access token ***
-//load the map
-//map.on('load', () => {
-
-
-//});
